@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">PedidosYa</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_user">User</string>
+
+    <string name="tokenApi">62641225-85af-4ed4-aa0c-c689e772fe7c</string>
+
+</resources>
