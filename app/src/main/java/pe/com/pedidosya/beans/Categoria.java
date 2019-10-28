@@ -1,6 +1,8 @@
 package pe.com.pedidosya.beans;
 
-public class Categoria {
+import com.orm.SugarRecord;
+
+public class Categoria extends SugarRecord {
 
     private int codCategoria;
     private String nomCategoria;

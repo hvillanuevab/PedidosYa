@@ -1,5 +1,6 @@
 package pe.com.pedidosya.ui.notifications;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -55,7 +56,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class NotificationsFragment extends Fragment {
 
+    ProgressDialog progressDialog;
     private List<Empresa> empresaList=new ArrayList<>();
+
     String url="https://adylconsulting.com/portafolio/urgent/api/v.1.0/empresasAliadas";
     @BindView(R.id.rvLista)  RecyclerView rvCategoria;
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -75,22 +78,15 @@ public class NotificationsFragment extends Fragment {
     }
 
     private void wsListarEmpresa(){
-        /*Retrofit retrofit = NetworkClient.getRetrofitClient();
-
-        Api api=retrofit.create(Api.class);*/
-/*
-        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
-        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);*/
 
         Gson gson = new GsonBuilder()
                 .create();
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://adylconsulting.com/portafolio/urgent/api/v.1.0/")
-                //.baseUrl("https://intranet.cima.com.pe:8443/api/v1/pedidos/")
-              //  .client(new OkHttpClient.Builder().addInterceptor(interceptor).build())
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
         Api api = retrofit.create(Api.class);
+
         JsonObject jsonObject=new JsonObject();
 
             jsonObject.addProperty("token",getActivity().getString(R.string.tokenApi));
@@ -99,7 +95,7 @@ public class NotificationsFragment extends Fragment {
             jsonObject.addProperty("codCategoria","-1");
 
         Call<RepuestaEmpresa> call=api.getListEmpresas(jsonObject);
-       //Call<Data> call=apis.getData();
+
         call.enqueue(new Callback() {
             @Override
             public void onResponse(Call call, Response response) {
