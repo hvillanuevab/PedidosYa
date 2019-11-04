@@ -3,7 +3,6 @@ package pe.com.pedidosya;
 import android.app.Application;
 
 import com.orm.SchemaGenerator;
-import com.orm.SugarApp;
 import com.orm.SugarContext;
 import com.orm.SugarDb;
 

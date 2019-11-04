@@ -27,8 +27,9 @@ android {
 ext {
     support = 28
     glide="4.9.0"
-    retrofit="2.4.0"
     knife="10.2.0"
+    dagger = "2.8"
+    retrofitversion = '2.4.0'
 }
 
 dependencies {
@@ -48,22 +49,39 @@ dependencies {
     implementation "com.android.support:cardview-v7:$support"
     implementation "com.android.support:recyclerview-v7:$support"
 
+    //              LOAD IMAGE
+    //#####################################################################
     implementation 'de.hdodenhof:circleimageview:2.1.0'
-
     implementation "com.github.bumptech.glide:glide:$glide"
     annotationProcessor "com.github.bumptech.glide:compiler:$glide"
 
+    //               VOLLEY (LLamadas al servidor https)
+    //#####################################################################
     implementation 'com.android.volley:volley:1.1.1'
 
-    implementation "com.squareup.retrofit2:retrofit:$retrofit"
-    implementation 'com.google.code.gson:gson:2.8.2'
-    implementation "com.squareup.retrofit2:converter-gson:$retrofit"
-
+    //               BUTTER KNIFE (inyección de vistas)
+    //#####################################################################
     implementation "com.jakewharton:butterknife:$knife"
     annotationProcessor "com.jakewharton:butterknife-compiler:$knife"
 
+    //               SUGAR ORM (Base de datos local - SQLITE)
+    //#####################################################################
     implementation 'com.github.satyan:sugar:1.5'
 
+    //                RETROFIT (Llamadas al servidor https )
+    //Interactuación con APIs Rest
+    //#####################################################################
+    implementation "com.squareup.retrofit2:retrofit:$retrofitversion"
+    //Parseo de JSON
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitversion"
+    implementation 'com.google.code.gson:gson:2.8.2'
     //Logging HTTP
     implementation 'com.squareup.okhttp3:logging-interceptor:3.11.0'
+    //programacion reactiva
+    implementation "io.reactivex.rxjava2:rxjava:2.x.y"
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitversion"
+
+    implementation 'com.amitshekhar.android:rx-android-networking:1.0.0'
+
 }
