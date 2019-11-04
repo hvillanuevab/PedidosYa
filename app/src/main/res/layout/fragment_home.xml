@@ -23,7 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        android:text="Sin ButterKnife"
+        android:text="PATRÓN MVP"
         app:layout_constraintTop_toBottomOf="@id/text_home"/>
 
     <Button

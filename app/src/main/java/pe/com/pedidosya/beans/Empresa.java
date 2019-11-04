@@ -1,8 +1,13 @@
 package pe.com.pedidosya.beans;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.orm.SugarRecord;
+import com.orm.dsl.Table;
 
-public class Empresa {
+import java.io.Serializable;
+
+@Table
+public class Empresa extends SugarRecord implements Serializable {
 
     @SerializedName("cPerCodigo")
     @Expose

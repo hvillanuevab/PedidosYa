@@ -1,6 +1,7 @@
 package pe.com.pedidosya.adapter;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,9 +18,11 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 import pe.com.pedidosya.R;
 import pe.com.pedidosya.beans.Empresa;
+import pe.com.pedidosya.ui.maps.UbicacionActivity;
 
 public class EmpresaAdapter  extends RecyclerView.Adapter<EmpresaAdapter.EmpresaItem> {
 
@@ -56,6 +59,8 @@ public class EmpresaAdapter  extends RecyclerView.Adapter<EmpresaAdapter.Empresa
                 .dontAnimate()
                 .placeholder(R.drawable.sinfoto)
                 .into(holder.cvFoto);
+
+
     }
 
     @Override
@@ -75,6 +80,13 @@ public class EmpresaAdapter  extends RecyclerView.Adapter<EmpresaAdapter.Empresa
         public EmpresaItem(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this,itemView);
+        }
+
+        @OnClick(R.id.cvFoto)
+        public void mapa(View view){
+            Intent intent =new Intent(activity, UbicacionActivity.class);
+            intent.putExtra("empresa",empresaList.get(getAdapterPosition()));
+            activity.startActivity(intent);
         }
     }
 }
