@@ -31,6 +31,7 @@ public class EmpresaPresenter implements EmpresaMVP.Presenter {
 
     @Override
     public void listEmpresa() {
+        view.showDialog();
         if (ConnectivityReceiver.getConnectivityStatus(activity))
             model.getEmpresas(new Callback<RepuestaEmpresa>() {
                 @Override
@@ -42,11 +43,13 @@ public class EmpresaPresenter implements EmpresaMVP.Presenter {
 
                     List<Empresa> empresaList= Select.from(Empresa.class).list();
                     view.loadEmpresa(repuestaEmpresa.getEmpresaList());
+                    view.hideDialog();
                 }
 
                 @Override
                 public void returnError(String message) {
                     view.showError(message);
+                    view.hideDialog();
                 }
             });
         else

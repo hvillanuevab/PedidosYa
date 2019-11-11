@@ -1,6 +1,8 @@
 package pe.com.pedidosya.ui.empresas;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -27,6 +29,8 @@ public class EmpresaActivity extends AppCompatActivity implements EmpresaMVP.Vie
 
 
     EmpresaMVP.Presenter presenter;
+
+    ProgressDialog progressDialog;
 
     @BindView(R.id.toolbar) Toolbar toolbar;
     @BindView(R.id.rvEmpresas) RecyclerView rvEmpresas;
@@ -72,12 +76,18 @@ public class EmpresaActivity extends AppCompatActivity implements EmpresaMVP.Vie
 
     @Override
     public void showDialog() {
-
+        progressDialog = new ProgressDialog(new ContextThemeWrapper(EmpresaActivity.this, android.R.style.Theme_Holo_Light_Dialog));
+        progressDialog.setIndeterminate(true);
+        progressDialog.setMessage("Cargando empresas");
+        progressDialog.setTitle(getString(R.string.app_name));
+        progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.show();
     }
 
     @Override
     public void hideDialog() {
-
+       if (progressDialog.isShowing())
+           progressDialog.hide();
     }
 
     @Override
